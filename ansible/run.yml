@@ -1,9 +1,0 @@
----
-- hosts: local
-  connection: local
-  vars_files:
-    - run-vars.yml
-  roles:
-    - facts
-    - nodejs
-    - preferences-server-data-loader
