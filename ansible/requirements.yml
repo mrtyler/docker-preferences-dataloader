@@ -1,5 +1,0 @@
-# Already present from inclusivedesign/nodejs container
-# - src: https://github.com/idi-ops/ansible-facts
-# - src: https://github.com/idi-ops/ansible-nodejs
-- src: https://github.com/gpii-ops/ansible-preferences-server-data-loader
-  name: preferences-server-data-loader

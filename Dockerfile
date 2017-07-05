@@ -1,15 +1,11 @@
-FROM gpii/universal
+FROM alpine:3.6
 
-WORKDIR /etc/ansible/playbooks
+WORKDIR /home/node
 
-COPY ansible/* /etc/ansible/playbooks/
+RUN apk add --no-cache curl git && \
+    git clone --depth=1 https://github.com/GPII/universal.git && \
+    apk del git
 
-RUN ansible-galaxy install -r requirements.yml
+COPY loadPreferences.sh /usr/local/bin
 
-RUN ansible-playbook build.yml --tags "install,configure"
-
-COPY start.sh /usr/local/bin/start.sh
-
-RUN chmod 755 /usr/local/bin/start.sh
-
-ENTRYPOINT ["/usr/local/bin/start.sh"]
+CMD ["/usr/local/bin/loadPreferences.sh"]
