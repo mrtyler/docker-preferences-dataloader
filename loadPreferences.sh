@@ -17,7 +17,6 @@ if [ ! -z "$CLEAR_INDEX" ]; then
   log "Deleting database at $COUCHDB_URL"
   if ! curl -fsS -X DELETE "$COUCHDB_URL"; then
     log "Error deleting database"
-    exit 1
   fi
 fi
 
