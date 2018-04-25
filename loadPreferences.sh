@@ -7,8 +7,23 @@ log() {
 }
 
 if [ -z "$COUCHDB_URL" ]; then
-  echo "COUCHDB_URL environment variable must be defined"
-  exit 1
+  if [ -z "$COUCHDB_USER" ]; then
+    echo "COUCHDB_USER environment variable must be defined"
+    exit 1
+  fi
+  if [ -z "$COUCHDB_PASSWORD" ]; then
+    echo "COUCHDB_PASSWORD environment variable must be defined"
+    exit 1
+  fi
+  if [ -z "$COUCHDB_PROTOCOL" ]; then
+    echo "COUCHDB_PROTOCOL environment variable must be defined"
+    exit 1
+  fi
+  if [ -z "$COUCHDB_HOSTPATH" ]; then
+    echo "COUCHDB_HOSTPATH environment variable must be defined"
+    exit 1
+  fi
+  COUCHDB_URL="$COUCHDB_PROTOCOL://$COUCHDB_USER:$COUCHDB_PASSWORD@$COUCHDB_HOSTPATH"
 fi
 
 log "Starting"
